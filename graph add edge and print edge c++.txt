@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+//Always remember if nodes start rom 0 means 0-based indexing then take nodes in list as adj[N + 1]
+//i.e if you have 5 nodes so in 0-based , 0 1 2 3 4. but nodes are 5 so you have make it N + char16_t
+\\and loop over 1 to < n for only printing purpose not taking input of edges as it remains same as formal for lop.
+//utility function to taken input of edges and coonect them accordignly your graph.
+//n = nodes, m = edges. So youare od o ake edges as input until edgesi.e m. so you can connect them.
+//And n are only nodes that are the size of your adjacency list or matrix.
+void addEdge(vector<int> adj[], int n, int m){
+    int u, v;
+    for(int i = 0 ; i < m ; i++){
+        cin >> u >> v;
+    
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+}
+
+//utility function to print edges and nodes accordignly your graph.
+void printEdge(vector<int> adj[], int n, int m){
+    vector<int> :: iterator it;
+    for(int i = 1 ; i < n + 1 ; i++){
+        cout << i << "->";  //this prints the the nodes
+        for(it = adj[i].begin() ; it!=adj[i].end() ; it++){
+            cout << *it << " ";
+        }
+        cout << "\n";
+    }
+}
+
+int main() {
+    int n,m;
+    cin >> n >> m;
+    vector<int> adj[n + 1];
+    addEdge(adj,n,m);
+    printEdge(adj,n,m);
+    
+    
+    
+	return 0;
+}
